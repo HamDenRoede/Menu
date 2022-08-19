@@ -21,24 +21,48 @@ namespace Menu
             
             Console.WriteLine("\n");
             Console.WriteLine("\tIndex");
-            Console.WriteLine("---------------------");
+            Console.WriteLine("-------------------------");
 
-            Console.WriteLine("   -   Circle       |");
-            Console.WriteLine("   -   Triangle     |");
-            Console.WriteLine("   -   Square       |");
-            Console.WriteLine("   -   Rectangle    |");
-            Console.WriteLine("                    |");
-            Console.WriteLine("   -  Shortcuts:    |");
-            Console.WriteLine("   -   Quit = Q     |");
-            Console.WriteLine("   -   Menu = M     |");
-            Console.WriteLine("---------------------\n");
+            Console.WriteLine("   -   Circle    (C)     |");
+            Console.WriteLine("   -   Triangle  (T)     |");
+            Console.WriteLine("   -   Square    (S)     |");
+            Console.WriteLine("   -   Rectangle (R)     |");
+            Console.WriteLine("                         |");
+            Console.WriteLine("   -   Shortcuts:        |");
+            Console.WriteLine("   -   Quit =    (Q)     |");
+            Console.WriteLine("   -   Menu =    (M)     |");
+            Console.WriteLine("-------------------------\n");
 
             Console.WriteLine(" Enter the desired calculation: ");
             string tast = Console.ReadKey().Key.ToString();
 
+            switch(tast)
+            {
+                case "c":
+                    //udregn cirle
+                    break;
+                case "t":
+                    //udregn triangle
+                    break;
+                case "s":
+                    //udregn square
+                    break;
+                case "r":
+                    //udregn rect
+                    break;
 
 
-            Console.ReadKey();
+                case "q":
+                    //sluk program
+                    break;
+                case "m":
+                    mainMenu();
+                    break;
+            }
+
+
+
+            //Console.ReadKey();
         }
     }
 }
