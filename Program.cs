@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Threading;
+using System.Timers;
+
 
 namespace Menu
 {
@@ -19,7 +21,6 @@ namespace Menu
             Console.WriteLine("---------------------------------------");
             Console.WriteLine("    Welcome to the Shape Calculator");
             Console.WriteLine("---------------------------------------");
-
             Console.WriteLine("\n");
             Console.WriteLine("\tIndex");
             Console.WriteLine("-------------------------");
@@ -40,29 +41,12 @@ namespace Menu
             Console.WriteLine("   -   Menu =    (M)     |");
             Console.ForegroundColor = ConsoleColor.White;
             Console.WriteLine("-------------------------\n");
-
             Console.WriteLine("Enter the desired calculation: ");
+
             string input = Console.ReadLine();
-
-        
-
-            /*
-            const string c = "Please enter the radius of the circle: ";
-            const string m = "Redirecting to Main Menu"; 
-            */
-
-
 
             switch (input.ToLower())
             {
-                /*
-                case "test":
-                    Console.WriteLine("Testing testing, attention please.");
-                    Console.WriteLine("Taking you back to the main menu now.");
-                    Thread.Sleep(4000);
-                    mainMenu();
-                    break;
-                */
 
                 case "c":
                     calcCircle();
@@ -75,8 +59,11 @@ namespace Menu
                     }
                     if (userInputCircle == "q")
                     {
+                        Console.WriteLine("Terminating the application...");
+                        Thread.Sleep(3000);
                         Environment.Exit(0);
-                    } else if (userInputCircle != "m")
+                    } 
+                    else if (userInputCircle != "m")
                     {
                         Console.WriteLine("Try again");
                     }
@@ -97,6 +84,8 @@ namespace Menu
                     }
                     if (userInputTriangle == "q")
                     {
+                        Console.WriteLine("Terminating the application...");
+                        Thread.Sleep(3000);
                         Environment.Exit(0);
                     }
                     else if (userInputTriangle != "m")
@@ -120,6 +109,8 @@ namespace Menu
                     }
                     if (userInputSquare == "q")
                     {
+                        Console.WriteLine("Terminating the application...");
+                        Thread.Sleep(3000);
                         Environment.Exit(0);
                     }
                     else if (userInputSquare != "m")
@@ -131,6 +122,7 @@ namespace Menu
                         Console.WriteLine("Try again");
                     }
                     break;
+
                 case "r":
                     calcRect();
                     Console.WriteLine("Press 'M' to return to return to main manu. ");
@@ -142,6 +134,8 @@ namespace Menu
                     }
                     if (userInputRect == "q")
                     {
+                        Console.WriteLine("Terminating the application...");
+                        Thread.Sleep(3000);
                         Environment.Exit(0);
                     }
                     else if (userInputRect != "m")
@@ -156,6 +150,8 @@ namespace Menu
 
                     
                 case "q":
+                    Console.WriteLine("Terminating the application...");
+                    Thread.Sleep(3000);
                     Environment.Exit(0);
                     break;
                 case "m":                    
@@ -169,20 +165,24 @@ namespace Menu
                     mainMenu();
                     break;
             }
-            //Console.ReadKey();
         }
 
         static void calcCircle()
         {
-            Console.WriteLine("Please enter the radius of the circle");
+
+            Console.WriteLine("Please enter the radius of the circle (cm)");
             double radius = Convert.ToDouble(Console.ReadLine());
+
             double pi = 3.141;
             double circleCircumference = 2 * (pi * radius);
             double circleArea = (2 * pi) * (2 * radius);
 
-            Console.WriteLine("The circumference is: {0}  --  The area is: {1}", circleCircumference, circleArea);
-            Console.ForegroundColor = ConsoleColor.Magenta;
-            //Console.Clear();
+            Console.WriteLine("The circumference is: {0} (cm)", circleCircumference);
+            Console.WriteLine("The area is: {0} (cm2)", circleArea);
+            Console.WriteLine("Circumference calculation: 2 * ({0} * {1})", pi, radius);
+            Console.WriteLine("Area calculation: (2 * {0}) * (2 * {1})", pi, radius);
+
+            Console.ForegroundColor = ConsoleColor.Red;
             Console.WriteLine("  ******  ");
             Console.WriteLine("****  ****");
             Console.WriteLine("**      **");
@@ -195,67 +195,69 @@ namespace Menu
 
         static void calcTriangle ()
         {
-            Console.WriteLine("Please enter the first side of the triangle");
+
+            Console.WriteLine("Please enter the length first side of the triangle (cm)");
             double a = Convert.ToDouble(Console.ReadLine());
-            Console.WriteLine("Please enter the second side of the triangle");
+            Console.WriteLine("Please enter the length second side of the triangle (cm)");
             double b = Convert.ToDouble(Console.ReadLine());
-            Console.WriteLine("Please enter the third side of the triangle");
+            Console.WriteLine("Please enter the length third side of the triangle (cm)");
             double c = Convert.ToDouble(Console.ReadLine());
 
             double triangleCircumference = a + b + c;
+            //s = semiperimeter
+            double s = (a + b + c) / 2;
+            double area = Math.Sqrt(s * (s - a) * (s - b) * (s - c));
 
-            Console.WriteLine("The circumference is: {0}", triangleCircumference);
-            Console.ForegroundColor = ConsoleColor.Magenta;
+            Console.WriteLine("The circumference is: {0} (cm)", triangleCircumference);
+            Console.WriteLine("The area is: {0} (cm2)", area);
+            Console.ForegroundColor = ConsoleColor.DarkYellow;
             Console.WriteLine("   ©   ");
             Console.WriteLine("  © ©  ");
             Console.WriteLine(" ©   © ");
             Console.WriteLine("© © © ©");
-
             Console.ForegroundColor = ConsoleColor.White;
 
         }
 
         static void calcSquare ()
         {
-            Console.WriteLine("Please enter the length of one side of the square");
+
+            Console.WriteLine("Please enter the length of one side of the square (cm)");
             double a = Convert.ToDouble(Console.ReadLine());
 
             double squareCircumference = 4 * a;
             double squareArea = 2 * a;
 
-            Console.WriteLine("The circumference is: {0}", squareCircumference);
-            Console.WriteLine("The area is: {0}", squareArea);
-            Console.ForegroundColor = ConsoleColor.Magenta;
-            Console.WriteLine(" ______");
-            Console.WriteLine("|      |");
-            Console.WriteLine("|      | {0}", a);
-            Console.WriteLine("|______|");
-            Console.WriteLine("   {0}  ", a);
-
+            Console.WriteLine("The circumference is: {0} (cm)", squareCircumference);
+            Console.WriteLine("The area is: {0} (cm2)", squareArea);
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.WriteLine("╔═════╗");
+            Console.WriteLine("║     ║");
+            Console.WriteLine("║     ║ {0}", a);
+            Console.WriteLine("╚═════╝");
+            Console.WriteLine("  {0}  ", a);
             Console.ForegroundColor = ConsoleColor.White;
         }
 
         static void calcRect()
         {
-            Console.WriteLine("Please enter the length of the first side of the square");
+
+            Console.WriteLine("Please enter the length of the rectangle (cm)");
             double a = Convert.ToDouble(Console.ReadLine());
-            Console.WriteLine("Please enter the length of the second side of the square");
+            Console.WriteLine("Please enter the breadth (cm)");
             double b = Convert.ToDouble(Console.ReadLine());
-            Console.WriteLine("Please enter the length of the third side of the square");
-            double c = Convert.ToDouble(Console.ReadLine());
-            Console.WriteLine("Please enter the length of the fourth side of the square");
-            double d = Convert.ToDouble(Console.ReadLine());
-            double rectCircumference = a + b + c + d;
 
-            Console.WriteLine("The circumference is: {0}", rectCircumference);
-            Console.ForegroundColor = ConsoleColor.Magenta;
-            Console.WriteLine(" __________");
-            Console.WriteLine("|          |");
-            Console.WriteLine("|          |");
-            Console.WriteLine("|__________|");
+            double rectCircumference = (a * 2) + (b * 2);
+            double rectArea = a * b;
 
+            Console.WriteLine("The circumference is: {0} (cm)", rectCircumference);
+            Console.WriteLine("The area is: {0} (cm2)", rectArea);
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.WriteLine("╔══════════╗");
+            Console.WriteLine("║          ║");
+            Console.WriteLine("║          ║");
+            Console.WriteLine("╚══════════╝");
             Console.ForegroundColor = ConsoleColor.White;
-
         }
     }
 }
