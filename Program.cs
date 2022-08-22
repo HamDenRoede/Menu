@@ -9,6 +9,7 @@ namespace Menu
     {
         static void Main(string[] args)
         {
+            Console.Title = "Shape Calculator";
             mainMenu();
         }
 
